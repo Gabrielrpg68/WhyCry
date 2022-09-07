@@ -18,33 +18,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.fiap.whycry.model.User;
-import br.com.fiap.whycry.service.UserService;
+import br.com.fiap.whycry.model.Cliente;
+import br.com.fiap.whycry.service.ClienteService;
 
 @RestController
-@RequestMapping("/api/user")
-public class UserController {
+@RequestMapping("/api/cliente")
+public class ClienteController {
     
     @Autowired
-    private UserService service;
+    private ClienteService service;
 
     @GetMapping
-    public List<User> index(){
+    public List<Cliente> index(){
         return service.listAll();
     }
     @PostMapping
-    public ResponseEntity<User> create(@RequestBody @Valid User user){
+    public ResponseEntity<Cliente> create(@RequestBody @Valid Cliente user){
         service.save(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }
     @GetMapping("{id}")
-    public ResponseEntity<User> show(@PathVariable Long id) {
+    public ResponseEntity<Cliente> show(@PathVariable Long id) {
         return ResponseEntity.of(service.getById(id));
     }
     @PutMapping("{id}")
-    public ResponseEntity<User> update(@PathVariable Long id, @RequestBody @Valid User newUser){
+    public ResponseEntity<Cliente> update(@PathVariable Long id, @RequestBody @Valid Cliente newUser){
         // buscar a tarefa no BD
-        Optional<User> optional = service.getById(id);
+        Optional<Cliente> optional = service.getById(id);
 
         // verificar se existe usuario com esse id
         if(optional.isEmpty())
@@ -63,7 +63,7 @@ public class UserController {
     @DeleteMapping("{id}")
     public ResponseEntity<Object> destroy(@PathVariable Long id){
 
-        Optional<User> optional = service.getById(id);
+        Optional<Cliente> optional = service.getById(id);
 
         if(optional.isEmpty())
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();

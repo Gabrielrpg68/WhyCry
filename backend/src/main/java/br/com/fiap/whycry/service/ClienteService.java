@@ -6,24 +6,24 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.fiap.whycry.model.User;
-import br.com.fiap.whycry.repository.UserRepository;
+import br.com.fiap.whycry.model.Cliente;
+import br.com.fiap.whycry.repository.ClienteRepository;
 
 @Service
-public class UserService {
+public class ClienteService {
     
     @Autowired
-    UserRepository repository;
+    ClienteRepository repository;
 
-    public List<User> listAll(){
+    public List<Cliente> listAll(){
         return repository.findAll();
     }
 
-    public void save(User task) {
+    public void save(Cliente task) {
         repository.save(task);
     }
 
-    public Optional<User> getById(Long id) {
+    public Optional<Cliente> getById(Long id) {
         return repository.findById(id);
     }
 
