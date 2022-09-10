@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -17,13 +19,15 @@ public class Bebe{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cd_bebe;
-    private int cd_cliente;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "codigoUsuario")
+    private Cliente cd_cliente;
     private String nm_bebe;
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate dt_nascimento;
     private String ds_genero;
 
-    public Bebe(Long cd_bebe, int cd_cliente, String nm_bebe, LocalDate dt_nascimento, String ds_genero) {
+    public Bebe(Long cd_bebe, Cliente cd_cliente, String nm_bebe, LocalDate dt_nascimento, String ds_genero) {
         this.cd_bebe = cd_bebe;
         this.cd_cliente = cd_cliente;
         this.nm_bebe = nm_bebe;
@@ -31,7 +35,7 @@ public class Bebe{
         this.ds_genero = ds_genero;
     }
 
-    public Bebe(int cliente, String nm_bebe, LocalDate dt_nascimento, String ds_genero) {
+    public Bebe(Cliente cliente, String nm_bebe, LocalDate dt_nascimento, String ds_genero) {
         this.cd_cliente = cliente;
         this.nm_bebe = nm_bebe;
         this.dt_nascimento = dt_nascimento;
@@ -50,11 +54,11 @@ public class Bebe{
         this.cd_bebe = cd_bebe;
     }
 
-    public int getCd_cliente() {
+    public Cliente getCd_cliente() {
         return cd_cliente;
     }
 
-    public void setCd_cliente(int cd_cliente) {
+    public void setCd_cliente(Cliente cd_cliente) {
         this.cd_cliente = cd_cliente;
     }
 

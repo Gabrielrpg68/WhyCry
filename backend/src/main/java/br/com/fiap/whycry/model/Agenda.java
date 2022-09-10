@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -17,7 +19,9 @@ public class Agenda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cd_agenda;
-    private int cd_bebe;
+    @ManyToOne
+    @JoinColumn(name = "codigoBebe")
+    private Bebe cd_bebe;
     @DateTimeFormat(pattern = "dd/MM/yyyy-HH:mm:ss")
     private LocalDateTime dt_horario;
     private String ds_agenda;
@@ -25,7 +29,7 @@ public class Agenda {
     public Agenda() {
     }
 
-    public Agenda(int cd_bebe, LocalDateTime dt_horario, String ds_agenda) {
+    public Agenda(Bebe cd_bebe, LocalDateTime dt_horario, String ds_agenda) {
         this.cd_bebe = cd_bebe;
         this.dt_horario = dt_horario;
         this.ds_agenda = ds_agenda;
@@ -39,11 +43,11 @@ public class Agenda {
         this.cd_agenda = cd_agenda;
     }
 
-    public int getCd_bebe() {
+    public Bebe getCd_bebe() {
         return cd_bebe;
     }
 
-    public void setCd_bebe(int cd_bebe) {
+    public void setCd_bebe(Bebe cd_bebe) {
         this.cd_bebe = cd_bebe;
     }
 
