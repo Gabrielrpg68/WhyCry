@@ -25,7 +25,10 @@ public class Cliente {
     private String nm_cliente;
     @Column(name = "ds_email")
     private String ds_email;
+    @Column(name = "ds_cpf")
+    private String ds_cpf;
     private String ds_senha;
+    private String num_telefone;
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate dt_nascimento;
     private String ds_genero;
@@ -33,53 +36,65 @@ public class Cliente {
     @Column
     private byte[] ds_imagem;
 
-
     public Cliente() {
     }
 
-    public Cliente(Long cd_cliente, String nm_cliente, String ds_email, String ds_senha, LocalDate dt_nascimento,
-            String ds_genero, byte[] ds_imagem) {
+    public Cliente(Long cd_cliente, String nm_cliente, String ds_email, String ds_cpf, String ds_senha,
+            String num_telefone, LocalDate dt_nascimento, String ds_genero, byte[] ds_imagem) {
         this.cd_cliente = cd_cliente;
         this.nm_cliente = nm_cliente;
         this.ds_email = ds_email;
+        this.ds_cpf = ds_cpf;
         this.ds_senha = ds_senha;
+        this.num_telefone = num_telefone;
         this.dt_nascimento = dt_nascimento;
         this.ds_genero = ds_genero;
         this.ds_imagem = ds_imagem;
     }
 
-    public Cliente(@NotBlank(message = "Nome é obrigatório") String nm_cliente, String ds_email, String ds_senha, LocalDate dt_nascimento, String ds_genero,
-    byte[] ds_imagem) {
+    public Cliente(@NotBlank(message = "Nome é obrigatório") String nm_cliente, String ds_email, String ds_cpf,
+            String ds_senha, String num_telefone,
+            LocalDate dt_nascimento, String ds_genero, byte[] ds_imagem) {
         this.nm_cliente = nm_cliente;
         this.ds_email = ds_email;
+        this.ds_cpf = ds_cpf;
         this.ds_senha = ds_senha;
+        this.num_telefone = num_telefone;
         this.dt_nascimento = dt_nascimento;
         this.ds_genero = ds_genero;
         this.ds_imagem = ds_imagem;
     }
 
-    public Long getId() {
+    public Long getCd_cliente() {
         return cd_cliente;
     }
 
-    public void setId(Long id) {
-        this.cd_cliente = id;
+    public void setCd_cliente(Long cd_cliente) {
+        this.cd_cliente = cd_cliente;
     }
 
-    public String getNome() {
+    public String getNm_cliente() {
         return nm_cliente;
     }
 
-    public void setNome(String nome) {
-        this.nm_cliente = nome;
+    public void setNm_cliente(String nm_cliente) {
+        this.nm_cliente = nm_cliente;
     }
 
-    public String getEmail() {
+    public String getDs_email() {
         return ds_email;
     }
 
-    public void setEmail(String email) {
-        this.ds_email = email;
+    public void setDs_email(String ds_email) {
+        this.ds_email = ds_email;
+    }
+
+    public String getDs_cpf() {
+        return ds_cpf;
+    }
+
+    public void setDs_cpf(String ds_cpf) {
+        this.ds_cpf = ds_cpf;
     }
 
     public String getDs_senha() {
@@ -88,6 +103,14 @@ public class Cliente {
 
     public void setDs_senha(String ds_senha) {
         this.ds_senha = ds_senha;
+    }
+
+    public String getNum_telefone() {
+        return num_telefone;
+    }
+
+    public void setNum_telefone(String num_telefone) {
+        this.num_telefone = num_telefone;
     }
 
     public LocalDate getDt_nascimento() {
@@ -116,15 +139,10 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente [cd_cliente=" + cd_cliente + ", ds_email=" + ds_email + ", ds_genero=" + ds_genero
-                + ", ds_imagem=" + Arrays.toString(ds_imagem) + ", ds_senha=" + ds_senha + ", dt_nascimento="
-                + dt_nascimento + ", nm_cliente=" + nm_cliente + "]";
+        return "Cliente [cd_cliente=" + cd_cliente + ", nm_cliente=" + nm_cliente + ", ds_email=" + ds_email
+                + ", ds_cpf=" + ds_cpf + ", ds_senha=" + ds_senha + ", num_telefone=" + num_telefone
+                + ", dt_nascimento=" + dt_nascimento + ", ds_genero=" + ds_genero + ", ds_imagem="
+                + Arrays.toString(ds_imagem) + "]";
     }
-
-    
-
-    
-
-    
 
 }

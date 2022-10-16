@@ -53,7 +53,7 @@ public class ClienteController {
         // atualizar os dados no objeto
         var user = optional.get();
         BeanUtils.copyProperties(newUser, user);
-        user.setId(id);
+        user.setCd_cliente(id);
 
         // salvar no BD
         service.save(user);

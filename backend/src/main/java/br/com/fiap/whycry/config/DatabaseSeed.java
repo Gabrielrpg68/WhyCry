@@ -48,9 +48,10 @@ public class DatabaseSeed implements CommandLineRunner {
     ClienteService service;
 
     public void run(String... args) {
-
-        Cliente cliente1 = new Cliente("Gabriel", "gabrielrpg68@gmail.com", "12345", LocalDate.of(2000, 07, 22), "M", null);
-        Cliente cliente2 = new Cliente("Joao Paulo", "JoaoPaulo@gmail.com", "54321", LocalDate.of(1997, 02, 25), "M", null);
+        
+        Cliente cliente1 = new Cliente("Gabriel", "gabrielrpg68@gmail.com", "471.922.635-85", "12345645Dantas", "(11)96359-8753", LocalDate.of(2000, 07, 22), "M", null);
+        Cliente cliente2 = new Cliente("Joao Paulo", "JoaoPaulo@gmail.com", "653.985.632.58", "54321Paulo", "(11)98532-9654", LocalDate.of(1997, 02, 25), "M", null);
+     
 
         repository.saveAll(List.of(cliente1, cliente2
         ));
